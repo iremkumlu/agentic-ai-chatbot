@@ -1,0 +1,12 @@
+langchain
+langchain-google-genai
+google-generativeai
+langgraph
+streamlit
+chromadb
+langchain-chroma
+pypdf
+wikipedia
+python-dotenv
+tiktoken
+langchain_community

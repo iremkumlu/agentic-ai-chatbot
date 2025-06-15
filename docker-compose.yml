@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  app: # Uygulama servisi
+    build: .
+    container_name: agentic_chatbot_app # Container ismi
+    ports:
+      - "8501:8501" # Host makinenin 8501 portunu container'ın 8501 portuna bağla (Streamlit için)
+    volumes:
+      - .:/app
+      # 'chromadata' adında bir Docker volume oluştur ve bunu container içindeki
+      # /app/chroma_data dizinine bağla. ChromaDB verileri burada saklanacak.
+      - chromadata:/app/chroma_data
+    env_file:
+      - .env # API anahtarları ve diğer ortam değişkenleri için .env dosyasını kullanalım
+    restart: unless-stopped # Container beklenmedik şekilde durursa yeniden başlatalım
+
+volumes:
+  chromadata: # ChromaDB verilerini saklamak için kullanılacak Docker volume'u tanımlayalım
